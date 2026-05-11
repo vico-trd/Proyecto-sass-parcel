@@ -1,0 +1,169 @@
+@use '../abstracts' as core;
+@use 'sass:color';
+
+// título compartido por todas las secciones
+.section-title {
+    font-family: core.$font-family;
+    font-size: core.size(xl);
+    color: core.color(secondary);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+// hero
+.hero {
+    @include core.flexposition(row, center, center);
+    @include core.section-padding(5rem, 1.5rem);
+    background-color: core.color(secondary);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    // imagen de fondo - cubre toda la sección con opacidad
+    &__img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.2;
+        z-index: 0;
+    }
+
+    // el contenido va por encima de la imagen
+    &__content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+    }
+
+    // en móvil el título es más pequeño
+    &__title {
+        font-family: core.$font-family;
+        font-size: core.size(xl);
+        color: core.color(white);
+        margin: 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+
+        @include core.media(medium) {
+            font-size: core.size(xxl);
+            letter-spacing: 0.2rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: core.size(sm);
+        color: core.color(tertiary);
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+
+        @include core.media(medium) {
+            font-size: core.size(md);
+        }
+    }
+
+    // en móvil los botones van en columna
+    &__cta {
+        @include core.flexposition(column, center, center);
+        gap: 1rem;
+
+        @include core.media(small) {
+            @include core.flexposition(row, center, center);
+            flex-wrap: wrap;
+        }
+    }
+
+    // en escritorio más espacio vertical
+    @include core.media(large) {
+        @include core.section-padding(8rem, 2rem);
+    }
+}
+
+// características - grid de 3 columnas con el mixin de clase
+.features {
+    @include core.section-padding();
+    background-color: core.color(tertiary);
+
+    &__grid {
+        @include core.grid-flexible(18rem, 2rem);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+
+// precios
+.pricing {
+    @include core.section-padding();
+    background-color: core.color(white);
+
+    &__grid {
+        @include core.grid-flexible(18rem, 2rem);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+
+// testimonios
+.testimonials {
+    @include core.section-padding();
+    background-color: core.color(secondary);
+
+    .section-title {
+        color: core.color(white);
+    }
+
+    &__grid {
+        @include core.grid-flexible(20rem, 2rem);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+
+// formulario de contacto
+.contact {
+    @include core.section-padding();
+    background-color: core.color(tertiary);
+    text-align: center;
+
+    &__subtitle {
+        font-size: core.size(md);
+        color: core.color(secondary);
+        margin-bottom: 2.5rem;
+    }
+
+    &__form {
+        max-width: 500px;
+        margin: 0 auto;
+        @include core.flexposition(column, center, stretch);
+        gap: 1.5rem;
+    }
+}
+
+// grupo de campo del formulario
+.form__group {
+    @include core.flexposition(column, flex-start, flex-start);
+    gap: 0.5rem;
+
+    label {
+        font-size: core.size(xs);
+        font-weight: core.weight('medium');
+        color: core.color(secondary);
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid color.adjust(core.color(tertiary), $lightness: -15%);
+        border-radius: 0.4rem;
+        font-size: core.size(sm);
+        font-family: 'Open Sans', sans-serif;
+        background-color: core.color(white);
+
+        &:focus {
+            outline: none;
+            border-color: core.color(primary);
+        }
+    }
+}

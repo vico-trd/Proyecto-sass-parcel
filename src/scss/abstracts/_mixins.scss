@@ -1,0 +1,139 @@
+@use "variables" as vars;
+@use "sass:color";
+@use "sass:map";
+
+// mixins que hemos visto en clase
+
+/// Aplica un borde sólido y un radio de esquina estándar
+/// @group Estilos Base
+@mixin border_radius {
+    border: 0.1rem solid vars.color(primary);
+    border-radius: 0.5rem;
+}
+
+// breakpoints - los tamaños de pantalla que usamos en media queries
+$sizes: (
+    small:   576px,
+    medium:  768px,
+    large:   992px,
+    xlarge:  1200px,
+    xxlarge: 1400px
+);
+
+/// Mixin para media queries responsive
+/// @group Layout
+/// @param {String} $clave - Clave del mapa de breakpoints (small, medium, large...)
+/// @example scss
+///   .hero {
+///     @include core.media(medium) { flex-direction: column; }
+///   }
+@mixin media($clave) {
+    $size: map.get($sizes, $clave);
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
+
+/// Configuración rápida de Flexbox
+/// @group Layout
+/// @param {String} $direction [row] - Dirección del flex
+/// @param {String} $justifycontent [center] - Alineación horizontal
+/// @param {String} $alignitem [center] - Alineación vertical
+/// @example scss
+///   .footer {
+///     @include core.flexposition(column, center, center);
+///   }
+@mixin flexposition($direction: row, $justifycontent: center, $alignitem: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifycontent;
+    align-items: $alignitem;
+}
+
+/// Layout básico de rejilla principal
+/// @group Layout
+@mixin layout_basico() {
+    display: grid;
+    grid-template-columns: minmax(10rem, 1fr) repeat(7, minmax(min-content, 16rem)) minmax(10rem, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    grid-gap: 2rem;
+    z-index: 100;
+}
+
+/// Crea una rejilla flexible con columnas auto-ajustables
+/// @group Layout
+/// @param {Number} $min-size [18rem] - Tamaño mínimo de cada columna
+/// @param {Number} $gap [1.5rem] - Espaciado entre celdas
+/// @example scss
+///   .products-list {
+///     @include core.grid-flexible(18rem, 1.5rem);
+///   }
+@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+    gap: $gap;
+}
+
+// estilos del menú de navegación
+@mixin navigation() {
+    &-list {
+        @include flexposition(row, flex-end);
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    &-item {
+        list-style-type: none;
+    }
+    &-link {
+        color: vars.color(primary);
+        font-size: vars.size(sm);
+        font-weight: vars.weight('medium');
+        text-decoration: none;
+        letter-spacing: 0.05rem;
+        transition: color .3s;
+        &:hover {
+            color: color.adjust(vars.color(quaternary), $lightness: 10%);
+        }
+    }
+}
+
+// pone estilos a h1, h2 y h3 de una sola vez con un bucle
+@mixin cabeceras {
+    @for $i from 1 through 3 {
+        h#{$i} {
+            font-family: vars.$font-family;
+            font-size: vars.size(sm) * 2;
+            font-weight: vars.weight("light");
+        }
+    }
+}
+
+// mixins que he creado yo para este proyecto
+
+/// Estilos base para tarjetas (cards)
+/// @group Componentes
+/// @param {Color} $bg [white] - Color de fondo de la tarjeta
+/// @example scss
+///   .feature-card {
+///     @include core.card-style();
+///   }
+@mixin card-style($bg: white) {
+    background-color: $bg;
+    border-radius: 0.8rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/// Padding uniforme para secciones de la página
+/// @group Layout
+/// @param {Number} $vertical [5rem] - Padding vertical
+/// @param {Number} $horizontal [2rem] - Padding horizontal
+/// @example scss
+///   .section-contact {
+///     @include core.section-padding(6rem, 3rem);
+///   }
+@mixin section-padding($vertical: 5rem, $horizontal: 2rem) {
+    padding: $vertical $horizontal;
+}

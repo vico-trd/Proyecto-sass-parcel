@@ -1,0 +1,13 @@
+@use "sass:math";
+
+/// Convierte píxeles a rem
+/// @group Utilidades
+/// @param {Number} $px - Valor en píxeles a convertir
+/// @return {Number} - Valor equivalente en rem
+/// @example scss
+///   .titulo {
+///     font-size: rem(24px); // devuelve 1.5rem
+///   }
+@function rem($px) {
+    @return math.div($px, 16px) * 1rem;
+}

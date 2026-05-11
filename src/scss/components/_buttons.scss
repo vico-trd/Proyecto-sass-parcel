@@ -1,0 +1,40 @@
+@use '../abstracts' as core;
+
+// estilos base que comparten todos los botones
+.btn {
+    display: inline-block;
+    padding: core.rem(14px) core.rem(32px);
+    font-family: core.$font-family;
+    font-size: core.size(sm);
+    font-weight: core.weight('medium');
+    letter-spacing: 0.05rem;
+    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+
+    // botón principal - naranja relleno
+    &--primary {
+        background-color: core.color(primary);
+        color: core.color(white);
+        border-color: core.color(primary);
+
+        &:hover {
+            background-color: core.color(quaternary);
+            border-color: core.color(quaternary);
+        }
+    }
+
+    // botón secundario - solo borde
+    &--secondary {
+        background-color: transparent;
+        color: core.color(primary);
+        border-color: core.color(primary);
+
+        &:hover {
+            background-color: core.color(primary);
+            color: core.color(white);
+        }
+    }
+}

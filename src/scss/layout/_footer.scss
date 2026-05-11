@@ -1,0 +1,92 @@
+@use '../abstracts' as core;
+
+// pie de página - en móvil todo en columna centrado
+.footer {
+    @include core.flexposition(column, center, center);
+    text-align: center;
+    gap: 3rem;
+    background-color: core.color(dark);
+    color: core.color(white);
+    padding: 5rem 4rem;
+
+    // en tablet y escritorio distribuimos en fila
+    @include core.media(medium) {
+        @include core.flexposition(row, space-between, center);
+        flex-wrap: wrap;
+        text-align: left;
+    }
+
+    // bloque marca: logo + tagline apilados
+    &__brand {
+        @include core.flexposition(column, center, center);
+        gap: 0.5rem;
+    }
+
+    // nombre de la marca
+    &__logo {
+        font-family: core.$font-family;
+        font-size: core.size(lg);
+        color: core.color(primary);
+        font-weight: core.weight('bold');
+    }
+
+    &__tagline {
+        font-size: core.size(sm);
+        margin-top: 0;
+        color: core.color(tertiary);
+    }
+
+    // enlaces legales en fila
+    &__links {
+        @include core.flexposition(row, center, center);
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        a {
+            color: core.color(tertiary);
+            font-size: core.size(sm);
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+                color: core.color(primary);
+            }
+        }
+    }
+
+    // redes sociales
+    &__social {
+        @include core.flexposition(row, center, center);
+        gap: 1rem;
+    }
+
+    &__social-link {
+        @include core.flexposition(row, center, center);
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: core.color(white);
+        font-size: core.size(md);
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: core.color(primary);
+            color: core.color(dark);
+        }
+    }
+
+    // copyright - ocupa toda la línea
+    &__copy {
+        width: 100%;
+        text-align: center;
+        font-size: core.size(xs);
+        color: core.color(tertiary);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+        margin-top: 1rem;
+    }
+}

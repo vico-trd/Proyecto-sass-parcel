@@ -1,0 +1,32 @@
+@use '../abstracts' as core;
+
+// cabecera - en móvil apilamos logo y nav en columna
+.header {
+    @include core.flexposition(column, center, center);
+    background-color: core.color(secondary);
+    padding: 1rem 2rem;
+    gap: 0.8rem;
+
+    // en tablet y escritorio ponemos logo y nav en fila y anclamos la cabecera
+    @include core.media(medium) {
+        @include core.flexposition(row, space-between, center);
+        gap: 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    // logo
+    &__logo {
+        font-family: core.$font-family;
+        font-size: core.size(lg);
+        font-weight: core.weight('bold');
+        color: core.color(primary);
+        letter-spacing: 0.1rem;
+    }
+
+    // navegación - usamos el mixin de clase
+    &__nav {
+        @include core.navigation();
+    }
+}

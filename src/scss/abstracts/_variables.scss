@@ -1,0 +1,124 @@
+@use "sass:map";
+
+/// Paleta de colores del proyecto
+/// @group Colores
+/// @type Map
+$colors: (
+    primary:    #ff6b35,    // naranja - botones y detalles
+    secondary:  #1a1a2e,    // casi negro azulado - fondo oscuro
+    tertiary:   #f5f5f5,    // gris muy claro - fondo secciones
+    quaternary: #e05520,    // naranja más oscuro - para el hover
+    white:      #ffffff,
+    dark:       #0d0d1a
+);
+
+/// Escala de tamaños de fuente
+/// @group Tipografía
+/// @type Map
+$font-sizes: (
+    xs:  0.75rem,
+    sm:  1rem,
+    md:  1.25rem,
+    lg:  1.5rem,
+    xl:  2rem,
+    xxl: 3rem
+);
+
+/// Pesos tipográficos disponibles
+/// @group Tipografía
+/// @type Map
+$font-weights: (
+    "light":   300,
+    "regular": 400,
+    "medium":  500,
+    "bold":    700
+);
+
+/// Familia tipográfica principal - se usa en títulos h1, h2, h3
+/// @group Tipografía
+/// @type String
+$font-family: 'Oswald', sans-serif;
+
+/// Obtiene un color del mapa $colors
+/// @group Colores
+/// @param {String} $key - Clave del mapa de colores (primary, secondary, tertiary...)
+/// @return {Color} - El valor hexadecimal del color
+/// @example scss
+///   .boton {
+///     background-color: color(primary);
+///   }
+@function color($key) {
+    @if map.has-key($colors, $key) {
+        @return map.get($colors, $key);
+    } @else {
+        @error "El color '#{$key}' no existe en el mapa $colors.";
+    }
+}
+
+/// Obtiene un tamaño de fuente del mapa $font-sizes
+/// @group Tipografía
+/// @param {String} $key - Clave del mapa de tamaños (xs, sm, md, lg, xl, xxl)
+/// @return {Number} - El valor en rem
+/// @example scss
+///   .titulo {
+///     font-size: size(xl);
+///   }
+@function size($key) {
+    @if map.has-key($font-sizes, $key) {
+        @return map.get($font-sizes, $key);
+    } @else {
+        @error "El tamaño '#{$key}' no existe en el mapa $font-sizes.";
+    }
+}
+
+/// Obtiene un peso tipográfico del mapa $font-weights
+/// @group Tipografía
+/// @param {String} $key - Clave del mapa de pesos (light, regular, medium, bold)
+/// @return {Number} - El valor numérico del font-weight
+/// @example scss
+///   .texto {
+///     font-weight: weight('bold');
+///   }
+@function weight($key) {
+    @if map.has-key($font-weights, $key) {
+        @return map.get($font-weights, $key);
+    } @else {
+        @error "El peso '#{$key}' no existe en el mapa $font-weights.";
+    }
+}
+
+// devuelve un color del mapa de arriba
+/// @group Colores
+/// @param {String} $key - Clave del mapa de colores (primary, secondary, tertiary...)
+/// @return {Color} - El valor hexadecimal del color
+/// @example scss
+///   .boton {
+///     background-color: color(primary);
+///   }
+@function color($key) {
+    @return map.get($colors, $key);
+}
+
+// devuelve un tamaño de fuente del mapa
+/// @group Tipografía
+/// @param {String} $key - Clave del mapa de tamaños (xs, sm, md, lg, xl, xxl)
+/// @return {Number} - El valor en rem
+/// @example scss
+///   .titulo {
+///     font-size: size(xl);
+///   }
+@function size($key) {
+    @return map.get($font-sizes, $key);
+}
+
+// devuelve un peso tipográfico del mapa
+/// @group Tipografía
+/// @param {String} $key - Clave del mapa de pesos (light, regular, medium, bold)
+/// @return {Number} - El valor numérico del font-weight
+/// @example scss
+///   .texto {
+///     font-weight: weight('bold');
+///   }
+@function weight($key) {
+    @return map.get($font-weights, $key);
+}

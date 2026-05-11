@@ -1,0 +1,70 @@
+@use '../abstracts' as core;
+
+// tarjeta base - usamos el mixin propio card-style
+.card {
+    @include core.card-style();
+    @include core.border_radius();
+    @include core.flexposition(column, flex-start, flex-start);
+    gap: 1rem;
+
+    // número o icono encima del título
+    &__icon {
+        font-family: core.$font-family;
+        font-size: core.size(xl);
+        font-weight: core.weight('bold');
+        color: core.color(primary);
+    }
+
+    &__title {
+        font-family: core.$font-family;
+        font-size: core.size(lg);
+        color: core.color(secondary);
+    }
+
+    &__text {
+        font-size: core.size(sm);
+        color: core.color(secondary);
+        line-height: 1.7;
+    }
+
+    // autor del testimonio
+    &__author {
+        font-size: core.size(xs);
+        font-weight: core.weight('medium');
+        color: core.color(primary);
+        margin-top: auto;
+    }
+
+    // variante para planes de precios - centrado
+    &--pricing {
+        @include core.flexposition(column, flex-start, center);
+        text-align: center;
+
+        .btn {
+            margin-top: auto;
+            width: 100%;
+        }
+    }
+
+    // variante destacada del plan popular
+    &--featured {
+        background-color: core.color(secondary);
+        border-color: core.color(primary);
+
+        .card__title,
+        .card__text {
+            color: core.color(white);
+        }
+    }
+
+    // variante para testimonios - fondo oscuro
+    &--testimonial {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+
+        .card__text {
+            color: core.color(tertiary);
+            font-style: italic;
+        }
+    }
+}

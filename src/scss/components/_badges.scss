@@ -1,0 +1,20 @@
+@use '../abstracts' as core;
+
+// insignia pequeña que aparece encima de los títulos
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    font-size: core.size(xs);
+    font-weight: core.weight('medium');
+    border-radius: 2rem;
+    background-color: rgba(255, 107, 53, 0.15);
+    color: core.color(primary);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+
+    // variante destacada - fondo naranja sólido
+    &--highlight {
+        background-color: core.color(primary);
+        color: core.color(white);
+    }
+}

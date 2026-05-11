@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Tu gimnasio online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="scss/styles.scss">
+</head>
+<body>
+
+    <!-- cabecera con logo y navegación -->
+    <header class="header">
+        <div class="header__logo">FitZone</div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="#inicio" class="header__nav-link">Inicio</a></li>
+                <li class="header__nav-item"><a href="#caracteristicas" class="header__nav-link">Características</a></li>
+                <li class="header__nav-item"><a href="#testimonios" class="header__nav-link">Testimonios</a></li>
+                <li class="header__nav-item"><a href="#precios" class="header__nav-link">Precios</a></li>
+                <li class="header__nav-item"><a href="#contacto" class="header__nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- hero - sección principal con el CTA -->
+        <section class="hero" id="inicio">
+            <img src="assets/img/hero.avif" alt="Persona entrenando en el gimnasio" class="hero__img">
+            <div class="hero__content">
+                <span class="badge">Nuevo 2026</span>
+                <h1 class="hero__title">Entrena sin límites</h1>
+                <p class="hero__subtitle">Planes de entrenamiento personalizados para alcanzar tus metas. Sin excusas, solo resultados.</p>
+                <div class="hero__cta">
+                    <a href="#contacto" class="btn btn--primary">Empieza gratis</a>
+                    <a href="#caracteristicas" class="btn btn--secondary">Saber más</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- características del servicio - 3 tarjetas -->
+        <section class="features" id="caracteristicas">
+            <h2 class="section-title">¿Por qué FitZone?</h2>
+            <div class="features__grid">
+                <article class="card">
+                    <div class="card__icon">01</div>
+                    <h3 class="card__title">Entrenamientos personalizados</h3>
+                    <p class="card__text">Rutinas adaptadas a tu nivel, objetivos y tiempo disponible. Sin necesidad de equipamiento.</p>
+                </article>
+                <article class="card">
+                    <div class="card__icon">02</div>
+                    <h3 class="card__title">Seguimiento de progreso</h3>
+                    <p class="card__text">Registra tus entrenamientos y visualiza tu avance semana a semana con estadísticas claras.</p>
+                </article>
+                <article class="card">
+                    <div class="card__icon">03</div>
+                    <h3 class="card__title">Planes de nutrición</h3>
+                    <p class="card__text">Complementa tu entrenamiento con guías de alimentación diseñadas por nutricionistas.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- precios - 3 planes -->
+        <section class="pricing" id="precios">
+            <h2 class="section-title">Planes y precios</h2>
+            <div class="pricing__grid">
+                <article class="card card--pricing">
+                    <span class="badge">Básico</span>
+                    <h3 class="card__title">Gratis</h3>
+                    <p class="card__text">Acceso a 10 rutinas básicas y seguimiento de progreso.</p>
+                    <a href="#contacto" class="btn btn--secondary">Empezar</a>
+                </article>
+                <article class="card card--pricing card--featured">
+                    <span class="badge badge--highlight">Más popular</span>
+                    <h3 class="card__title">9,99 €/mes</h3>
+                    <p class="card__text">Rutinas ilimitadas, nutrición y acceso a la comunidad.</p>
+                    <a href="#contacto" class="btn btn--primary">Empezar</a>
+                </article>
+                <article class="card card--pricing">
+                    <span class="badge">Pro</span>
+                    <h3 class="card__title">19,99 €/mes</h3>
+                    <p class="card__text">Todo lo anterior más entrenador personal online.</p>
+                    <a href="#contacto" class="btn btn--secondary">Empezar</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- testimonios de usuarios -->
+        <section class="testimonials" id="testimonios">
+            <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+            <div class="testimonials__grid">
+                <article class="card card--testimonial">
+                    <p class="card__text">"En 3 meses perdí 8 kilos y me siento con más energía que nunca. Las rutinas son muy fáciles de seguir."</p>
+                    <footer class="card__author">— Laura M., 32 años</footer>
+                </article>
+                <article class="card card--testimonial">
+                    <p class="card__text">"Nunca había encontrado una app que me motivara tanto. El seguimiento de progreso es adictivo."</p>
+                    <footer class="card__author">— Carlos R., 27 años</footer>
+                </article>
+                <article class="card card--testimonial">
+                    <p class="card__text">"Los planes de nutrición junto con las rutinas son una combinación perfecta. Lo recomiendo al 100%."</p>
+                    <footer class="card__author">— Ana T., 41 años</footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- formulario de contacto -->
+        <section class="contact" id="contacto">
+            <h2 class="section-title">Únete a FitZone</h2>
+            <p class="contact__subtitle">Déjanos tu email y te mandamos tu primer plan de entrenamiento gratis.</p>
+            <form class="contact__form" action="#" method="post">
+                <div class="form__group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form__group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form__group">
+                    <label for="objetivo">Objetivo</label>
+                    <select id="objetivo" name="objetivo">
+                        <option value="">Selecciona tu objetivo</option>
+                        <option value="perder-peso">Perder peso</option>
+                        <option value="ganar-musculo">Ganar músculo</option>
+                        <option value="mejorar-resistencia">Mejorar resistencia</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn--primary">Quiero mi plan gratis</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- pie de página -->
+    <footer class="footer">
+        <div class="footer__brand">
+            <span class="footer__logo">FitZone</span>
+            <p class="footer__tagline">Entrena sin límites.</p>
+        </div>
+        <nav class="footer__nav">
+            <ul class="footer__links">
+                <li><a href="#">Aviso legal</a></li>
+                <li><a href="#">Privacidad</a></li>
+                <li><a href="#">Cookies</a></li>
+            </ul>
+        </nav>
+        <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="footer__copy">&copy; 2026 FitZone. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

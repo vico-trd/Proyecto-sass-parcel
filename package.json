@@ -1,0 +1,22 @@
+{
+  "name": "proyecto-4",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --no-cache",
+    "watch": "sass --no-source-map -w src/scss/styles.scss src/css/styles.css",
+    "sassdoc": "sassdoc src/scss/abstracts/ -d sassdoc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "parcel": "^2.16.4"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4"
+  }
+}

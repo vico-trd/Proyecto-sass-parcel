@@ -1,0 +1,23 @@
+// reset básico para que todos los navegadores partan del mismo punto
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// evita que las imágenes se salgan de su contenedor
+img {
+    max-width: 100%;
+    display: block;
+}
+
+// quitamos el estilo por defecto de las listas
+ul {
+    list-style: none;
+}
+
+// los enlaces sin color por defecto, los estilamos nosotros
+a {
+    text-decoration: none;
+    color: inherit;
+}

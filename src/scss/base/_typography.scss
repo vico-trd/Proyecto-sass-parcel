@@ -1,0 +1,16 @@
+@use '../abstracts' as core;
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+// fuente y color base para todo el body
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: core.size(sm);
+    font-weight: core.weight('regular');
+    color: core.color(secondary);
+    background-color: core.color(white);
+    line-height: 1.6;
+}
+
+// aplicamos Oswald a h1, h2 y h3 con el mixin de clase
+@include core.cabeceras;
