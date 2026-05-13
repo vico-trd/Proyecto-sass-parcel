@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --no-cache",
+    "build": "parcel build src/index.html --no-cache --public-url ./",
     "watch": "sass --no-source-map -w src/scss/styles.scss src/css/styles.css",
     "sassdoc": "sassdoc src/scss/abstracts/ -d sassdoc"
   },
